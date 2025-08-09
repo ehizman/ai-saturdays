@@ -58,9 +58,13 @@ def scrape_all_books():
     return all_books
 
 if __name__ == "__main__":
-    all_books = scrape_all_books()
+    try:
+        all_books = scrape_all_books()
 
-    with open("books.json", "w", encoding="utf-8") as f:
-        json.dump(all_books, f, indent=4, ensure_ascii=False)
+        with open("week-2/books.json", "w", encoding="utf-8") as f:
+            json.dump(all_books, f, indent=4, ensure_ascii=False)
 
-    print(f"Scraped {len(all_books)} books and saved to 'books.json'")
+        print(f"Scraped {len(all_books)} books and saved to 'books.json'")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        exit(1)
